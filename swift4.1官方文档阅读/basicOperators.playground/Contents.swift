@@ -166,15 +166,56 @@ let array = [1,2,3]
 //coal ?? Int8(array[4])  // 短路效果
 
 
+//逻辑非
+
+let allowedEntry = false
+if !allowedEntry {
+    print("ACCESS DENIED")
+}
+
+//小心选择布尔常量有助于代码的可读性
+
+//逻辑与
+//只要任意一个false ，整个表达式就为false
+// 第一个为false，就不计算第二个的结果了
+// 被称为短路计算
+// 空合运算符 逻辑与 都有短路计算
+
+let enterdDoorECode = true
+let passedERetinaScan = false
+if enterdDoorECode && passedERetinaScan {
+    print("Welcome")
+}else {
+    print("ACCESS DENIED")
+}
+
+//逻辑或
+//两个表达式中一个为true就位true
+// 也是符合 短路计算的，第一个为true ，就不会计算第二个表达式
+//目前 有 空合运算符 ，逻辑与 逻辑或 有短路计算
+
+let hasDoorKey = false
+let knowOverridePassword = true
+if hasDoorKey || knowOverridePassword {
+    print("Welcome")
+}else {
+    print("ACCESS DENIED")
+}
 
 
+// 逻辑运算组合计算
 
+if enterdDoorECode && passedRetinaScan || hasDoorKey {
+    print("Welcome")
+} else {
+   print("ACCESS DENIED")
+}
 
-
-
-
-
-
+if (enterdDoorCode && passedRetinaScan) || hasDoorKey {
+    print("Welcome")
+} else {
+    print("ACEESS DENIED")
+}
 
 
 
