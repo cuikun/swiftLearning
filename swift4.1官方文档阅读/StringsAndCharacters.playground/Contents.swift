@@ -83,7 +83,45 @@ print(threeDoubleQuotationMarks)
 var emptyString = "" //empty string literal
 
 
+if emptyString.isEmpty {
+    print("Noting is here")
+}
 
+var variableString = "horse"
+variableString += " and carriage"
+
+let constantString = "Highlander"
+//constantString += "and another Highlander" // this reports complie-time error - a constant string connot be modified
+
+
+// Strings Are value types
+
+// 在创建，传递给函数，赋值给一个变量或者常量的时候都会发生拷贝。
+// 这样可以保证传递过来的值，不管来自哪，你都可以很确信的认为这个字符串不会被修改，除非你自己要修改它
+// 在这种情况下，编译会优化实际发生拷贝的情况，只有需要的时候才会发生拷贝
+
+// TODO： 什么时候才是编译器认为需要的发生拷贝的时候？
+
+// https://forums.swift.org/t/about-the-swift-string-copy-when-takes-place/11341
+"""
+This may help you. From here 1(https://developer.apple.com/documentation/swift/string)
+
+Performance Optimizations
+Although strings in Swift have value semantics, strings use a copy-on-write strategy to store their data in a buffer. This buffer can then be shared by different copies of a string. A string’s data is only copied lazily, upon mutation, when more than one string instance is using the same buffer. Therefore, the first in any sequence of mutating operations may cost O(n) time and space.
+
+When a string’s contiguous storage fills up, a new buffer must be allocated and data must be moved to the new storage. String buffers use an exponential growth strategy that makes appending to a string a constant time operation when averaged over many append operations.
+"""
+
+
+
+for character in "Dog!🐶" {
+    print(character)
+}
+
+// https://forums.swift.org/t/how-do-you-type-a-character-like/11343
+// cmd + ctrl + space 组合键 可以调出输入表情的键盘
+
+let exclamationMark: Character = "!"
 
 
 

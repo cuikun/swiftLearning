@@ -23,6 +23,12 @@ if  enterdDoorCode && passedRetinaScan { // 逻辑与运算符
 
 //error: Execution was interrupted, reason: EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0).
 //The process has been left at the point where it was interrupted, use "thread return -x" to return to the state before expression evaluation.
+// 问题连接：https://forums.swift.org/t/thread-return-x-what-does-it-mean/11342
+
+
+
+
+
 
 //TODO: thread return -x 不知道是干啥的
 
