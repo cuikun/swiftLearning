@@ -23,14 +23,33 @@ if  enterdDoorCode && passedRetinaScan { // 逻辑与运算符
 
 //error: Execution was interrupted, reason: EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0).
 //The process has been left at the point where it was interrupted, use "thread return -x" to return to the state before expression evaluation.
-// 问题连接：https://forums.swift.org/t/thread-return-x-what-does-it-mean/11342
-
-
-
-
-
 
 //TODO: thread return -x 不知道是干啥的
+
+// 问题连接：https://forums.swift.org/t/thread-return-x-what-does-it-mean/11342
+
+/*
+ It’s an LLDB command.
+ 
+ That message is more of a follow-up message to an error, rather than an error message itself. It’s saying “hey, something went wrong, but you’re in a context where you can type LLDB commands and possibly spelunk around and debug your program’s state”.
+ 
+ If you’re in the Swift REPL, you run that command by prefixing it with a colon, like :thread return -x.
+ 
+ If you’re in Xcode, type that into the debug area 1.
+ 
+ LLDB’s description of the command is helpful if you know what stack frames are; otherwise I think there’s a bit of a learning cliff here that’s going to be tricky to hurdle:
+ 
+ :help thread return
+ 
+ Prematurely return from a stack frame, short-circuiting execution of newer frames and optionally yielding a specified value. Defaults to the exiting the current stack frame. Expects ‘raw’ input (see help raw-input.)
+ 
+ -x ( --from-expression ) Return from the innermost expression evaluation.
+ 
+ */
+
+// TODO: 学习 lldb 中的 stack frame ，这里面太多不知道的了，需要另外制定计划系统学习 。
+
+
 
 //let j:Int8 = Int8(i * 1000000)// 每个乘数不能大于Int8 的范围
 

@@ -112,6 +112,14 @@ Although strings in Swift have value semantics, strings use a copy-on-write stra
 When a string’s contiguous storage fills up, a new buffer must be allocated and data must be moved to the new storage. String buffers use an exponential growth strategy that makes appending to a string a constant time operation when averaged over many append operations.
 """
 
+/*
+ 性能优化
+ 虽然Swift中的字符串具有值语义，但字符串使用写入时复制策略将其数据存储在缓冲区中。 这个缓冲区可以被一个字符串的不同副本共享。 当多个字符串实例使用相同的缓冲区时，字符串的数据只会在变化时被懒惰地复制。 因此，任何序列的变异操作中的第一个可能花费O（n）时间和空间。
+ 
+ 当一个字符串的连续存储填满时，必须分配一个新的缓冲区，并且必须将数据移动到新的存储区。 字符串缓冲区使用指数增长策略，当通过许多附加操作进行平均时，可以将字符串追加到常量时间操作。
+ 
+ */
+
 
 
 for character in "Dog!🐶" {
@@ -121,11 +129,62 @@ for character in "Dog!🐶" {
 // https://forums.swift.org/t/how-do-you-type-a-character-like/11343
 // cmd + ctrl + space 组合键 可以调出输入表情的键盘
 
+//let exclamationMark: Character = "!"
+
+
+let catCharaters: [Character] = ["C", "a", "t", "!", "🐱"]
+let catString = String(catCharaters)
+print(catString)
+
+
+// concatenating Strings and characters
+
+let string1 = "hello"
+let string2 = " there"
+var welcome = string1 + string2
+
+var instructon = "look over"
+instructon += string2
+
 let exclamationMark: Character = "!"
+welcome.append(exclamationMark)
 
+let badStart = """
+one
+two
+"""
 
+let end = """
+three
+"""
+print(badStart + end)
 
+let goodStart = """
+one
+two
 
+"""
+print(goodStart + end)
+
+//String Interrpolation (字符串插入）
+
+let mutiplier = 3
+let message = "\(mutiplier) times 2.5 is \(Double(mutiplier) * 2.5)"
+
+for item in catString.utf16 {
+    print(item)
+}
+print("----------")
+for item in catString.utf8 {
+    print(item)
+}
+print("----------")
+for item in catString.unicodeScalars {
+    print(item)
+}
+print("----------")
+
+catString.count
 
 
 
