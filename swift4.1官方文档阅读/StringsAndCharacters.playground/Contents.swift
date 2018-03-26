@@ -184,7 +184,102 @@ for item in catString.unicodeScalars {
 }
 print("----------")
 
+for item in catString {
+    print(item)
+}
+print("----------")
+
 catString.count
+
+catString.uppercased()
+
+
+// 字符串相等
+
+let quotation = "we are the same"
+let sameQuotation = "we are the same"
+if quotation == sameQuotation {
+    print("this two word are equal")
+}
+
+let romeoAndJuliet = [
+    "Act 1 Scene 1: verrona,A public place",
+    "Act 1 Scene 2: Capulet's mansion",
+    "Act 1 Scene 3: A room outsite Capulet's mansion",
+    "Act 1 Scene 4: A street outside Capulet's mansion",
+    "Act 1 Scene 5: The Great Hall in Capulet's mansion",
+    "Act 2 Scene 1: Outside Capulet's mansion",
+    "Act 2 Scene 2: Capulet's orchard",
+    "Act 2 Scene 3: Outside Friar Lawrence's cell",
+    "Act 2 Scene 4: A street in Verona",
+    "Act 2 Scene 5: Capulet's mansion",
+    "Act 2 Scene 6: Friar Lawrence's cell"
+]
+
+var act1SceneCount = 0
+for scene in romeoAndJuliet {
+    if scene.hasPrefix("Act 1") {
+        act1SceneCount += 1
+    }
+}
+act1SceneCount
+
+var mansionCount = 0
+var cellCount = 0
+for scene in romeoAndJuliet {
+    if scene.hasSuffix("Capulet's mansion") {
+        mansionCount += 1
+    } else if scene.hasSuffix("Friar Lawrence's cell"){
+        cellCount += 1
+    }
+}
+mansionCount
+cellCount
+
+let normal = "Could you help me,please"
+let shouty = normal.uppercased()
+
+let whispered = normal.lowercased()
+
+
+// Counting Characters
+
+let unusualMenager = "koala 🐨, Snail 🐌, penguin 🐧, Dromedary 🐪"
+
+unusualMenager.count
+
+var word = "cafe"
+word.count
+
+word += "\u{301}"
+
+word
+
+word.count
+
+"\u{0061}"//.count
+
+"\u{1f425}"//.count
+
+
+// 扩展字形集
+
+let eAcute:Character = "\u{e9}"
+let combineEAcute:Character = "\u{65}\u{301}"
+
+let precomposed:Character = "\u{d55c}"
+let decomposed:Character = "\u{1112}\u{1161}\u{11ab}"
+
+
+let enclosedEAcute: Character = "\u{e9}\u{20dd}"
+let encosedBabyChick: Character = "\u{1f425}\u{20dd}"
+let regionalIndicatorForUS: Character = "\u{1f1fa}\u{1f1f8}"
+
+
+// 不同字符 和 相同字符的不同表示 所占用的内存大小是不同的， 调用 swfit 中 String 的count 属性是需要遍历整个字符串的。
+// NSString 的长度是和 String 的 UTF16 的长度相等
+
+
 
 
 
