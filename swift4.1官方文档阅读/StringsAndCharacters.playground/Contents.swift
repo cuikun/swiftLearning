@@ -273,7 +273,7 @@ let decomposed:Character = "\u{1112}\u{1161}\u{11ab}"
 
 let enclosedEAcute: Character = "\u{e9}\u{20dd}"
 let encosedBabyChick: Character = "\u{1f425}\u{20dd}"
-let regionalIndicatorForUS: Character = "\u{1f1fa}\u{1f1f8}"
+let regionalIndicatorForUS: Character = "\u{1f1fa}\u{1f1f8}\u{20dd}"
 
 
 // 不同字符 和 相同字符的不同表示 所占用的内存大小是不同的， 调用 swfit 中 String 的count 属性是需要遍历整个字符串的。
@@ -281,5 +281,77 @@ let regionalIndicatorForUS: Character = "\u{1f1fa}\u{1f1f8}"
 
 
 
+//String indices (字符串索引)
+
+let greeting = "Guten tag!"
+greeting[greeting.startIndex]
+greeting[greeting.index(before: greeting.endIndex)]
+greeting[greeting.index(after: greeting.startIndex)]
+
+let index = greeting.index(greeting.startIndex, offsetBy: 8)
+if let indexL = greeting.index(greeting.startIndex, offsetBy: 10, limitedBy: greeting.endIndex) {
+//    greeting[indexL]
+    print(indexL)
+}
+
+greeting[index]
+
+let s = "Swift"
+if let i = s.index(s.startIndex, offsetBy: 4, limitedBy: s.endIndex) {
+    print(s[i])
+}
+let j = s.index(s.startIndex, offsetBy: 6, limitedBy: s.endIndex)
+print(s.startIndex)
+print(s.endIndex)
+// Prints "t"
+
+for index in greeting.indices {
+    print(greeting[index], terminator:"")
+}
+print(1.0, 2.0, 3.0, 4.0, 5.0, separator: " ... ")
+
+//索引 index(before:),index(after:),index(_,offsetBy:) 可用于Array，Dictionary，set 等collection 协议实现的类
+
+//Inseting and Removing 插入和删除
+
+var welcome1 = "hello"
+welcome1.insert("!", at: welcome1.endIndex)
+
+welcome1.insert(contentsOf: " there", at: welcome1.index(before: welcome1.endIndex))
+
+welcome1.remove(at: welcome1.index(before: welcome1.endIndex))
+welcome1
+
+let range = welcome1.index(welcome1.endIndex, offsetBy: -6)..<welcome1.endIndex
+welcome1.removeSubrange(range)
+welcome1
+
+// 插入和删除的可以用于实现了 RangeReplaceableCollection 协议的类。
+//包括string ， Array ，Dictionary ，set
+
+//Substrings 子串
+
+let greeting1 = "hello,world!"
+let index1 = greeting1.index(of: ",") ?? greeting1.endIndex
+let beginning = greeting1[..<index1]
+// beginning is "hello"
+
+let newString = String(beginning)
+
+//String 和 Substring 都 遵守 StringProtocol 协议
 
 
+
+//如果两个字符串值（或两个字符值）的扩展字形群是正则等价的，则它们被认为是相等的。 如果扩展字形集具有相同的语言含义和外观，即使它们是在幕后使用不同的Unicode标量组成的，它们也具有正常的等价性。
+
+"\u{1f425}" == "🐥"
+
+// 长得一样，但是语言不通
+
+let latinCapitalLetterA: Character = "\u{41}"
+
+let cyrillicCapitalLetterA: Character = "\u{0410}"
+
+if latinCapitalLetterA != cyrillicCapitalLetterA {
+    print("These two characters are not equivalent.")
+}
