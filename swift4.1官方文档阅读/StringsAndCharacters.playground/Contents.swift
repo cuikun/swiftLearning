@@ -355,3 +355,25 @@ let cyrillicCapitalLetterA: Character = "\u{0410}"
 if latinCapitalLetterA != cyrillicCapitalLetterA {
     print("These two characters are not equivalent.")
 }
+
+"\u{203c}"
+
+//字符串的Unicode表示 Unicode Represetations of Strings
+
+//将Unicode 字符串写入文本文件或其他存储时，Unicode 标量将用Unicode定义的几种编码方式编码。每种形式把String的一小段编码成字符单元。这些编码形式包括UTF-8编码方式（把字符串编码为8bit一个字符单元），UTF-16编码方式（把字符串编码成为16字符一个字符单元），UTF-32编码方式（把字符串编码成为32bit一个单元）
+let dogString = "Dog‼🐶"
+for c in dogString.utf16 {
+    print(c)
+}
+
+// 扩展阅读 ： https://baike.baidu.com/item/Unicode/750500?fr=aladdin
+// UTF-8 的编码规则 XXXX
+// UTF-16 的编码规则 XXXX
+// UTF-32 的编码规则 XXX
+
+
+
+
+
+
+
