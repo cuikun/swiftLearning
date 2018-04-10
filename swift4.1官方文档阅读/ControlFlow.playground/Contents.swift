@@ -1,7 +1,5 @@
 //: Playground - noun: a place where people can play
 
-import UIKit
-
 //Swift的switch语句比许多C语言中的对应语言强大得多。 case可以匹配许多不同的模式，包括区间匹配，元组和特定类型的强制转换。 Switch每个case的值可以绑定到临时常量或变量，以便在case的主体中使用，并且复杂的匹配条件可以用每个case的where子句表示。
 
 // For-in loops
@@ -126,9 +124,32 @@ default:
 // Prints "The last letter of the alphabet"
 
 
+let anotherCharacter: Character = "a"
+switch anotherCharacter {
+case "a", "A":
+    print("the letter A")
+default:
+    print("Not the letter A")
+}
 
-
-
+let approximateCount = 62
+let countThings = "moons orbiting Saturn"
+let naturalCount: String
+switch approximateCount {
+case 0:
+    naturalCount = "no"
+case 1..<5:
+    naturalCount = "a few"
+case 5..<12:
+    naturalCount = "several"
+case 12..<100:
+    naturalCount = "dozens of"
+case 100..<1000:
+    naturalCount = "hundreds of"
+default:
+    naturalCount = "many"
+}
+print("There are \(naturalCount) \(countThings).")
 
 
 
