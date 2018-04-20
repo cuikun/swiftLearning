@@ -92,6 +92,7 @@ if let integerValue = possibleInterValue {
     print("An integer value could not be found for \(numberSymbol)")
 }
 
+// fallthrough 仅仅是为了模拟c中的switch，自动过渡到下个case或者default
 
 let interToDescribe = 5
 var description = "The number \(interToDescribe) is"
@@ -103,5 +104,6 @@ default:
     description += "an integer."
 }
 print(description)
+
 
 
