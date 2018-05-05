@@ -37,3 +37,19 @@ someFuncThatTakesAClosures() {
 someFuncThatTakesAClosures {
     
 }
+
+var ret:Double = 50
+let margin:Int = 60
+for index in 1...margin {
+    ret  += (1 - atan(1/Double(margin)*Double(index)) / Double.pi * 4) * 2
+    print(ret)
+}
+
+Double.pi/4
+
+Date(timeIntervalSince1970: TimeInterval(Int32.max))
+
+Double(Int32.max)/100/60/60/24
+
+
+
