@@ -19,12 +19,12 @@ BEGIN {
 	FS = "\t+"
 
 	while( getline <"sysconf.sym" > 0) {
-		printf("#ifddf %s\n", $1)
+		printf("#ifdef %s\n", $1)
 		printf("\tprintf(\"%s defined to be %%ls\\n\",(long)%s+0);\n",$1,$2 )
 		printf("#else\n")
 		printf("\tprintf(\"no symbol for %s \\n\"):\n", $1)
 		printf("#endif\n")
-		printf("#ifddf %s\n\n", $2)
+		printf("#ifdef %s\n\n", $2)
 		printf("\tpr_sysconf(\"%s = \",%s);\n",$1,$2)
 		printf("#else\n")
 		printf("\tprintf(\"\no symbol for %s \\n\");\n",$2)
@@ -32,13 +32,13 @@ BEGIN {
 	}
 	close("sysconf.sym")
 
-	while ( getline < "pathconf.sym" > 0) {
+	while ( getline <"pathconf.sym" > 0) {
 		printf("#ifdef %s \n", $1)
 		printf("\tprintf(\"%s defined to be %%ls\\n\",(long)%s+0);\n",$1,$2 )
 		printf("#else\n")
 		printf("\tprintf(\"no symbol for %s \\n\"):\n", $1)
 		printf("#endif\n")
-		printf("#ifddf %s\n\n", $2)
+		printf("#ifdef %s\n", $2)
 		printf("\tpr_sysconf(\"%s = \",argv[1],%s);\n",$1,$2)
 		printf("#else\n")
 		printf("\tprintf(\"no symbol for %s \\n\");\n",$2)
@@ -55,7 +55,7 @@ END {
 	printf("}\n\n");
 	printf("static void\n");
 	printf("pr_sysconf(char * mesg, int name) \n");
-	printf("{\n", );
+	printf("{\n");
 	printf("\tlong val;\n\n");
 	printf("\tfputs(mesg, stdout);\n");
 	printf("\terrno = 0;\n");
@@ -71,7 +71,7 @@ END {
 
 	printf("static void\n");
 	printf("pr_pathconf(char *mesg, char *path, int name)\n");
-	printf("{\n", );
+	printf("{\n");
 	printf("\tlong val;\n");
 	printf("\n");
 	printf("\tfputs(mesg, stdout);\n");
